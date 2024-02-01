@@ -18,9 +18,9 @@ from sklearn.metrics import confusion_matrix
 
 # Assuming you have the balanced_train and test_data available
 # If not, make sure to load your datasets appropriately
-balanced_train = pd.read_csv('balnsa.csv', index_col='SN')
+balanced_train = pd.read_csv('balan.csv', index_col='SN')
 
-test_data = pd.read_csv('tsst.csv', index_col='SN')
+test_data = pd.read_csv('test.csv', index_col='SN')
 
 st.image('sanku_logo.png', width=200)
 
@@ -53,9 +53,9 @@ for feature in balanced_train.drop(['CATEGORY'], axis=1).columns:
 # Create a dataframe with user input
 user_input_df = pd.DataFrame([user_input])
 
-# Display user input
+# Display user input with two decimal places
 st.write("User Input:")
-st.write(user_input_df)
+st.write(round(user_input_df, 2))
 
 # Dropdown to select the model
 st.sidebar.header('Select Model')
@@ -85,16 +85,16 @@ if st.checkbox("Show Confusion Matrix"):
     classification_rep = classification_report(balanced_train['CATEGORY'], selected_model.predict(balanced_train.drop(['CATEGORY'], axis=1)))
     st.text_area("Classification Report", classification_rep, height=200)
 
-# Display model evaluation results
+# Display model evaluation results with two decimal places
 st.header("Model Evaluation Results")
 for model in models:
     accuracy = cross_val_score(model, balanced_train.drop(['CATEGORY'], axis=1), balanced_train['CATEGORY'], cv=5)
-    st.write(f"Accuracy of {model.__class__.__name__}: {accuracy.mean()}")
+    st.write(f"Accuracy of {model.__class__.__name__}: {round(accuracy.mean(), 2)}")
 
-# Display predictions and probabilities
+# Display predictions and probabilities with two decimal places
 predictions = selected_model.predict(test_data.drop(['CATEGORY'], axis=1))
 probabilities = selected_model.predict_proba(test_data.drop(['CATEGORY'], axis=1))
 dosifier_predictions = pd.DataFrame(probabilities, columns=selected_model.classes_, index=test_data.index)
 dosifier_predictions_final = dosifier_predictions.groupby(level=0).mean()
 st.header("Test Data Predictions and Probabilities")
-st.write(dosifier_predictions_final)
+st.write(round(dosifier_predictions_final, 2))
