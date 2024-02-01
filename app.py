@@ -77,7 +77,7 @@ if st.checkbox("Show Confusion Matrix"):
     # Display confusion matrix as heatmap
     st.write("Confusion Matrix Heatmap:")
     fig, ax = plt.subplots(figsize=(8, 6))
-    sns.heatmap(confusion_mat, annot=True, fmt="d", cmap="Blues", xticklabels=selected_model.classes_, yticklabels=selected_model.classes_)
+    sns.heatmap(confusion_mat, annot=True, fmt="d", cmap="Oranges", xticklabels=selected_model.classes_, yticklabels=selected_model.classes_)
     st.pyplot(fig)
 
     # Display classification report
