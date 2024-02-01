@@ -18,8 +18,9 @@ from sklearn.metrics import confusion_matrix
 
 # Assuming you have the balanced_train and test_data available
 # If not, make sure to load your datasets appropriately
-balanced_train = pd.read_csv('balan.csv')
-test_data = pd.read_csv('test.csv')
+balanced_train = pd.read_csv('balnsa.csv', index_col='SN')
+
+test_data = pd.read_csv('tsst.csv', index_col='SN')
 
 st.image('sanku_logo.png', width=200)
 
