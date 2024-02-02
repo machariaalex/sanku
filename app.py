@@ -22,8 +22,8 @@ balanced_train = pd.read_csv('balnsa.csv',index_col='SN')
 
 test_data = pd.read_csv('tsst.csv',index_col='SN')
 
-balanced_train.index = balanced_train.index.astype(int)
-test_data.index = test_data.index.astype(int)
+#balanced_train.index = balanced_train.index.astype(int)
+#test_data.index = test_data.index.astype(int)
 
 
 
