@@ -48,7 +48,7 @@ for model in models:
 st.title("Model Deployment with Streamlit")
 
 # User input for features
-st.sidebar.header('Query Columns')
+st.sidebar.header('Input Features')
 # Create dropdowns for selecting columns
 selected_date_added = st.sidebar.selectbox("Select Date Added Column", query_columns['DATE ADDED'].unique())
 selected_sn = st.sidebar.selectbox("Select Serial Number Column", query_columns['SN'].unique())
@@ -70,8 +70,6 @@ if not selected_row.empty:
 else:
     st.warning("No matching row found for the selected columns.")
 
-
-st.sidebar.header('Input Features')
 user_input = {}
 for feature in balanced_train.drop(['CATEGORY'], axis=1).columns:
     user_input[feature] = st.sidebar.slider(f'Select {feature}', float(balanced_train[feature].min()), float(balanced_train[feature].max()))
