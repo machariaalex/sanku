@@ -17,8 +17,10 @@ import matplotlib.pyplot as plt
 
 # Assuming you have the balanced_train and test_data available
 # If not, make sure to load your datasets appropriately
-balanced_train = pd.read_csv('balaced_train.csv', index_col='SN')
-test_data = pd.read_csv('tet_dta.csv', index_col='SN')
+# Assuming 'Unnamed: 0' is the name of the column you want to remove
+balanced_train = pd.read_csv('balaned_train.csv').set_index('SN').drop('Unnamed: 0', axis=1, errors='ignore')
+test_data = pd.read_csv('test_dta.csv').set_index('SN').drop('Unnamed: 0', axis=1, errors='ignore')
+
 query_columns = pd.read_csv('buttons.csv')
 
 st.image('sanku_logo.png', width=200)
