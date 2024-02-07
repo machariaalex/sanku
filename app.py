@@ -17,8 +17,8 @@ import matplotlib.pyplot as plt
 
 # Assuming you have the balanced_train and test_data available
 # If not, make sure to load your datasets appropriately
-balanced_train = pd.read_csv('balanced_train.csv', index_col='SN')
-test_data = pd.read_csv('test_data.csv', index_col='SN')
+balanced_train = pd.read_csv('balaned_train.csv', index_col='SN')
+test_data = pd.read_csv('test_dta.csv', index_col='SN')
 query_columns = pd.read_csv('buttons.csv')
 
 st.image('sanku_logo.png', width=200)
